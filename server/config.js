@@ -1,0 +1,79 @@
+import dotenv from 'dotenv';
+
+dotenv.config({ path: './config.env' });
+
+type configType = {
+  database: {
+    password: string,
+    url: string,
+    name: string,
+    local: string,
+    test: string,
+  },
+  sql: {
+    HOST: string,
+    USER: string,
+    PASSWORD: string,
+    DB: string,
+    dialect: 'string',
+    pool: {
+      max: number,
+      min: number,
+      acquire: number,
+      idle: number,
+    },
+  },
+  cloudinary: {
+    url: string,
+    productImagePath: string,
+  },
+};
+
+const env = (
+  envName: string,
+  defaultValue: string,
+  validate: boolean = true
+): string => {
+  const envValue = process.env[envName] || defaultValue;
+  if (envValue == null && validate) {
+    throw new Error(`required environment variable [${envName}] is undefined.`);
+  }
+  return envValue || '';
+};
+
+export const createConfig = (validateAllEnv: boolean = true): configType => {
+  const config: configType = {};
+
+  config.database = {
+    password: env('DATABASE_PASSWORD', null, validateAllEnv),
+    url: env('DATABASE_URL', null, validateAllEnv),
+    name: env('DATABASE_NAME', null, validateAllEnv),
+    local: env('DATABASE_LOCAL', null, validateAllEnv),
+    test: env('DATABASE_TEST', null, false),
+  };
+
+  config.applicationName = env('APPLICATION_NAME', null, validateAllEnv);
+
+  config.sql = {
+    host: env('SQL_HOST', null, validateAllEnv),
+    user: env('SQL_USER', null, validateAllEnv),
+    password: env('SQL_PASSWORD', null, validateAllEnv),
+    db: env('SQL_DB', null, validateAllEnv),
+    dialect: env('SQL_DIALECT', 'mysql', validateAllEnv),
+    pool: {
+      max: env('SQL_POOL_MAX', 5, validateAllEnv),
+      min: env('SQL_POOL_MIN', 0, validateAllEnv),
+      acquire: env('SQL_POOL_ACQUIRE', 30000, validateAllEnv),
+      idle: env('SQL_POOL_IDLE', 10000, validateAllEnv),
+    },
+  };
+  config.cloudinary = {
+    url: env('CLOUDINARY_URL', null, validateAllEnv),
+    productImagePath: env('PRODUCTS_IMAGE_BUCKET', null, validateAllEnv),
+  };
+  return config;
+};
+
+const config: configType = createConfig();
+global.appConfig = config;
+export default config;

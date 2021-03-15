@@ -1,0 +1,48 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "node": "current"
+        },
+        "useBuiltIns": "usage",
+        "corejs": "3.6.5"
+      }
+    ],
+    "@babel/preset-react",
+    "@babel/preset-flow"
+  ],
+  "plugins": [
+    [
+      "module-resolver",
+      {
+        "root": [
+          "./"
+        ],
+        "alias": {
+          "@": "./",
+          "@app": "./server/app.js",
+          "@controllers": "./server/controllers",
+          "@services": "./server/services",
+          "@models": "./server/models",
+          "@routes": "./server/routes",
+          "@config": "./server/config.js",
+          "@utils": "./server/utils",
+          "@store": "./client/store",
+          "@pages": "./client/pages",
+          "@client": "./client",
+          "@components": "./client/components",
+          "@tests": "./__tests__"
+        }
+      }
+    ],
+    "@babel/plugin-proposal-export-namespace-from",
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-transform-runtime",
+    "@babel/plugin-syntax-dynamic-import"
+  ],
+  "ignore": [
+    "server/public/**/*.js"
+  ]
+}

@@ -1,0 +1,57 @@
+{
+  "compilerOptions": {
+    "target": "es2017",
+    "module": "es2020",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": false,
+    "baseUrl": ".",
+    "paths": {
+      "@app": [
+        "server/app.js"
+      ],
+      "@controllers/*": [
+        "server/controllers/*"
+      ],
+      "@client/*": [
+        "client/*"
+      ],
+      "@store/*": [
+        "client/store/*"
+      ],
+      "@pages/*": [
+        "client/pages/*"
+      ],
+      "@services/*": [
+        "server/services/*"
+      ],
+      "@models/*": [
+        "server/models/*"
+      ],
+      "@routes": [
+        "server/routes/index.js"
+      ],
+      "@routes/*": [
+        "server/routes/*"
+      ],
+      "@config": [
+        "server/config.js"
+      ],
+      "@utils": [
+        "server/utils/index.js"
+      ],
+      "@utils/*": [
+        "/server/utils/*"
+      ],
+      "@components/*": [
+        "client/components/*"
+      ],
+      "@tests/*": [
+        "../__tests__/*"
+      ]
+    }
+  },
+  "exclude": [
+    "node_modules",
+    "dist"
+  ]
+}

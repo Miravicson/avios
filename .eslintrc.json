@@ -1,0 +1,125 @@
+{
+  "extends": [
+    "airbnb",
+    "prettier",
+    "plugin:jest/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings"
+  ],
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest/globals": true
+  },
+  "plugins": [
+    "prettier",
+    "eslint-plugin-flowtype",
+    "eslint-plugin-jest"
+  ],
+  "parser": "babel-eslint",
+  "parserOptions": {
+    "ecmaVersion": 2020,
+    "sourceType": "module"
+  },
+  "globals": {
+    "logger": true,
+    "appConfig": true
+  },
+  "rules": {
+    "flowtype/define-flow-type": [
+      2
+    ],
+    "flowtype/delimiter-dangle": [
+      2,
+      "always-multiline"
+    ],
+    "prettier/prettier": "error",
+    "spaced-comment": "off",
+    "no-console": "warn",
+    "consistent-return": "off",
+    "func-names": "off",
+    "object-shorthand": "off",
+    "no-process-exit": "off",
+    "no-param-reassign": "off",
+    "no-return-await": "off",
+    "class-methods-use-this": "off",
+    "no-useless-constructor": "error",
+    "no-var": "error",
+    "no-underscore-dangle": "off",
+    "prefer-arrow-callback": "off",
+    "no-duplicate-imports": "error",
+    "prefer-spread": "error",
+    "prefer-destructuring": [
+      "error",
+      {
+        "object": true,
+        "array": false
+      }
+    ],
+    "no-unused-vars": [
+      "error",
+      {
+        "argsIgnorePattern": "req|res|next|val|err"
+      }
+    ]
+  },
+  "settings": {
+    "import/resolver": {
+      "alias": {
+        "extensions": [
+          ".js"
+        ],
+        "map": [
+          [
+            "@components",
+            "./client/components/"
+          ],
+          [
+            "@store",
+            "./client/store/"
+          ],
+          [
+            "@pages",
+            "./client/pages/"
+          ],
+          [
+            "@server",
+            "./server"
+          ],
+          [
+            "@app",
+            "./server/app.js"
+          ],
+          [
+            "@controllers",
+            "./server/controllers/"
+          ],
+          [
+            "@services",
+            "./server/services/"
+          ],
+          [
+            "@models",
+            "./server/models/"
+          ],
+          [
+            "@routes",
+            "./server/routes/"
+          ],
+          [
+            "@config",
+            "./server/config.js"
+          ],
+          [
+            "@utils",
+            "./server/utils/"
+          ],
+          [
+            "@tests",
+            "./__tests__/"
+          ]
+        ]
+      }
+    }
+  }
+}
