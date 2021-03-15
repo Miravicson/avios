@@ -7,10 +7,13 @@ import cors from 'cors';
 import { AppError } from '@utils';
 import globalErrorHandler from '@controllers/errorController';
 import { v1Router } from '@routes/index';
+import viewRouter from '@routes/v1/viewRoutes';
 import { setSecurityMiddleWare } from '@utils/globalMiddleWare';
 
 const app: express$Application<express$Request, express$Response> = express();
 app.enable('trust proxy'); // allow our application to trust proxy
+app.set('view engine', 'pug'); // using pug as view engine
+app.set('views', path.resolve('./server/views')); // location of html views
 app.use(express.static(path.resolve('./server/public'))); // path for static files
 
 // Implement cors
@@ -37,11 +40,10 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: true, limit: '10kb' }));
 app.use(compression({}));
 
+// Static Routes
+app.use('/', viewRouter);
 // API Routes
 app.use('/api/v1', v1Router);
-app.get('*', (req, res) =>
-  res.sendFile(path.resolve(__dirname, 'public/index.html'))
-);
 
 // 4) Error handler
 app.all(

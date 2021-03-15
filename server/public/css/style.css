@@ -1,0 +1,30 @@
+html {
+  padding: 0;
+  margin: 0;
+}
+
+body {
+  box-sizing: border-box;
+  padding: 50px;
+}
+
+*, *::before, *::after {
+  box-sizing: inherit;
+}
+
+
+
+
+
+
+
+
+
+
+
+.sub-title {
+  font-style: italic;
+  color: #bbb;
+  font-size: 1.2rem;
+  text-decoration: underline;
+}

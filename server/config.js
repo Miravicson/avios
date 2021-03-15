@@ -36,15 +36,6 @@ const env = (
 
 export const createConfig = (validateAllEnv: boolean = true): configType => {
   const config: configType = {};
-
-  config.database = {
-    password: env('DATABASE_PASSWORD', null, validateAllEnv),
-    url: env('DATABASE_URL', null, validateAllEnv),
-    name: env('DATABASE_NAME', null, validateAllEnv),
-    local: env('DATABASE_LOCAL', null, validateAllEnv),
-    test: env('DATABASE_TEST', null, false),
-  };
-
   config.applicationName = env('APPLICATION_NAME', null, validateAllEnv);
 
   config.sql = {
