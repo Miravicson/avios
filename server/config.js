@@ -39,30 +39,25 @@ const env = (
 export const createConfig = (validateAllEnv: boolean = true): configType => {
   const config: configType = {};
   config.applicationName = env('APPLICATION_NAME', null, validateAllEnv);
-  if (process.env.NODE_ENV === 'development') {
-    config.sql = {
-      host: env('SQL_HOST', null, validateAllEnv),
-      user: env('SQL_USER', null, validateAllEnv),
-      password: env('SQL_PASSWORD', null, validateAllEnv),
-      db: env('SQL_DB', null, validateAllEnv),
-      dialect: env('SQL_DIALECT', 'mysql', validateAllEnv),
-      pool: {
-        max: env('SQL_POOL_MAX', 5, validateAllEnv),
-        min: env('SQL_POOL_MIN', 0, validateAllEnv),
-        acquire: env('SQL_POOL_ACQUIRE', 30000, validateAllEnv),
-        idle: env('SQL_POOL_IDLE', 10000, validateAllEnv),
-      },
-    };
-  }
+
+  config.sql = {
+    host: env('SQL_HOST', null, validateAllEnv),
+    user: env('SQL_USER', null, validateAllEnv),
+    password: env('SQL_PASSWORD', null, validateAllEnv),
+    db: env('SQL_DB', null, validateAllEnv),
+    dialect: env('SQL_DIALECT', 'mysql', validateAllEnv),
+    pool: {
+      max: env('SQL_POOL_MAX', 5, validateAllEnv),
+      min: env('SQL_POOL_MIN', 0, validateAllEnv),
+      acquire: env('SQL_POOL_ACQUIRE', 30000, validateAllEnv),
+      idle: env('SQL_POOL_IDLE', 10000, validateAllEnv),
+    },
+  };
 
   config.cloudinary = {
     url: env('CLOUDINARY_URL', null, validateAllEnv),
     productImagePath: env('PRODUCTS_IMAGE_BUCKET', null, validateAllEnv),
   };
-  if (process.env.CLEARDB_DATABASE_URL) {
-    config.clearDB = env('CLEARDB_DATABASE_URL', null, validateAllEnv);
-  }
-  config.sqlDatabaseString = process.env.SQL_DATABASE_STRING;
   return config;
 };
 
