@@ -21,6 +21,7 @@ type configType = {
     productImagePath: string,
   },
   clearDB?: string,
+  sqlDatabase?: string,
 };
 
 const env = (
@@ -61,6 +62,7 @@ export const createConfig = (validateAllEnv: boolean = true): configType => {
   if (process.env.CLEARDB_DATABASE_URL) {
     config.clearDB = env('CLEARDB_DATABASE_URL', null, validateAllEnv);
   }
+  config.sqlDatabaseString = process.env.SQL_DATABASE_STRING;
   return config;
 };
 

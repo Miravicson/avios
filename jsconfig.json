@@ -36,9 +36,6 @@
       "@utils/*": [
         "/server/utils/*"
       ],
-      "@components/*": [
-        "client/components/*"
-      ],
       "@tests/*": [
         "../__tests__/*"
       ]

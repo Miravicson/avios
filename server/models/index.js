@@ -3,10 +3,10 @@ import { AppError } from '@utils';
 import { Sequelize } from 'sequelize';
 import Product from '@models/productModel';
 
-const { sql, clearDB } = config;
+const { sql, clearDB, sqlDatabaseString } = config;
 
 const sequelize = clearDB
-  ? new Sequelize(clearDB)
+  ? new Sequelize(sqlDatabaseString || clearDB)
   : new Sequelize(sql.db, sql.user, sql.password, {
       host: sql.host,
       dialect: sql.dialect,
