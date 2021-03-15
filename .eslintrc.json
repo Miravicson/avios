@@ -71,18 +71,6 @@
         ],
         "map": [
           [
-            "@components",
-            "./client/components/"
-          ],
-          [
-            "@store",
-            "./client/store/"
-          ],
-          [
-            "@pages",
-            "./client/pages/"
-          ],
-          [
             "@server",
             "./server"
           ],

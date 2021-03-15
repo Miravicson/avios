@@ -10,7 +10,6 @@
         "corejs": "3.6.5"
       }
     ],
-    "@babel/preset-react",
     "@babel/preset-flow"
   ],
   "plugins": [
@@ -29,10 +28,6 @@
           "@routes": "./server/routes",
           "@config": "./server/config.js",
           "@utils": "./server/utils",
-          "@store": "./client/store",
-          "@pages": "./client/pages",
-          "@client": "./client",
-          "@components": "./client/components",
           "@tests": "./__tests__"
         }
       }

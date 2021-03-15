@@ -1,6 +1,6 @@
 import './config'; // Configure global.appConfig
 import './utils/logger'; // Configure global.logger
-import sqlDB from '../server/models/sql';
+import sqlDB from './models';
 
 // Handling uncaught exceptions
 process.on('uncaughtException', (err) => {

@@ -1,6 +1,6 @@
 import { catchAsync, AppError } from '@utils';
 import config from '@config';
-import sqlDB from '@models/sql';
+import sqlDB from '@models/index';
 import { completeUploadBase64 } from '@services/cloudinary';
 
 const Products = sqlDB.products;

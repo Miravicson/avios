@@ -12,14 +12,8 @@
       "@controllers/*": [
         "server/controllers/*"
       ],
-      "@client/*": [
-        "client/*"
-      ],
       "@store/*": [
         "client/store/*"
-      ],
-      "@pages/*": [
-        "client/pages/*"
       ],
       "@services/*": [
         "server/services/*"
