@@ -3,20 +3,22 @@ import { AppError } from '@utils';
 import { Sequelize } from 'sequelize';
 import Product from '@models/productModel';
 
-const { sql } = config;
+const { sql, clearDB } = config;
 
-const sequelize = new Sequelize(sql.db, sql.user, sql.password, {
-  host: sql.host,
-  dialect: sql.dialect,
-  operatorsAliases: false,
+const sequelize = clearDB
+  ? new Sequelize(clearDB)
+  : new Sequelize(sql.db, sql.user, sql.password, {
+      host: sql.host,
+      dialect: sql.dialect,
+      operatorsAliases: false,
 
-  pool: {
-    max: +sql.pool.max,
-    min: +sql.pool.min,
-    acquire: +sql.pool.acquire,
-    idle: +sql.pool.idle,
-  },
-});
+      pool: {
+        max: +sql.pool.max,
+        min: +sql.pool.min,
+        acquire: +sql.pool.acquire,
+        idle: +sql.pool.idle,
+      },
+    });
 
 const db = {};
 db.Sequelize = Sequelize;

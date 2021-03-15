@@ -3,13 +3,6 @@ import dotenv from 'dotenv';
 dotenv.config({ path: './config.env' });
 
 type configType = {
-  database: {
-    password: string,
-    url: string,
-    name: string,
-    local: string,
-    test: string,
-  },
   sql: {
     HOST: string,
     USER: string,
@@ -71,6 +64,9 @@ export const createConfig = (validateAllEnv: boolean = true): configType => {
     url: env('CLOUDINARY_URL', null, validateAllEnv),
     productImagePath: env('PRODUCTS_IMAGE_BUCKET', null, validateAllEnv),
   };
+  if (process.env.CLEARDB_DATABASE_URL) {
+    config.clearDB = env('CLEARDB_DATABASE_URL', null, validateAllEnv);
+  }
   return config;
 };
 
