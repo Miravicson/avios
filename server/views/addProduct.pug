@@ -1,0 +1,18 @@
+extends base
+
+block content
+  main.main
+    .addProduct-form
+      h2.heading-secondary.ma-bt-lg Create Products
+      form.form#login-form(action="/api/v1/products" method="post" target="_top")
+        .form__group
+          label.form__label(for='product_name') Product Name
+          input#email.form__input(type='text', placeholder='Iphone X', name='product_name' required)
+        .form__group
+          label.form__label(for='product_name') Product Description
+          input#email.form__input(type='text-area', placeholder='', name='product_description' required)
+        //- .form__group.ma-bt-md
+        //-   label.form__label(for='password') Password
+        //-   input#password.form__input(type='password', name='password' placeholder='••••••••', required, minlength='8')
+        .form__group
+          button.btn.btn--green Add Product

@@ -12,14 +12,12 @@
     "dev": "nodemon server/server.js",
     "start": "node lib/server.js",
     "start:full": "npm run build && npm run start",
-    "debug": "ndb npm run dev",
-    "debug:prod": "ndb start",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "watch:js": "parcel watch ./server/public/js/index.js --out-dir ./server/public/js --out-file bundle.js",
+    "build:js": "parcel build ./server/public/js/index.js --out-dir ./server/public/js --out-file bundle.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Miravicson/mairmoire-service.git"
+    "url": "git+https://github.com/Miravicson/avios.git"
   },
   "keywords": [
     "Avios",
@@ -30,9 +28,9 @@
   "author": "Victor Chiagozie Ughonu",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Miravicson/mairmoire-service/issues"
+    "url": "https://github.com/Miravicson/avios/issues"
   },
-  "homepage": "https://github.com/Miravicson/mairmoire-service#readme",
+  "homepage": "https://github.com/Miravicson/avios#readme",
   "devDependencies": {
     "@babel/cli": "^7.12.10",
     "@babel/core": "^7.12.10",
@@ -62,6 +60,7 @@
     "jest": "^26.6.3",
     "mocha": "^8.2.1",
     "nodemon": "^2.0.7",
+    "parcel-bundler": "^1.12.5",
     "prettier": "^2.2.1",
     "supertest": "^6.1.3"
   },
